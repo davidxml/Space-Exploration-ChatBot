@@ -1,41 +1,70 @@
 import sys
 import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+import json
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
 from knowledge_base  import load_knowledge_base
-from utils import preprocess_text
+from utils import preprocess_text, playful_responses
 
 class Chatbot:
-    def __init__(self, knowledge_base_path: str):
+    def __init__(self, knowledge_base_path: str, confidence_threshold: float = 0.2):
         """
         Initialise the chatbot:
         - Load the knowledge base 
         - Preprocess all questions
         - Build TF-IDF matrix for  similarity search
+        - Set a configurable confidence threshold
         """
 
         self.knowledge_base = load_knowledge_base(knowledge_base_path)
-        # separate questions and answers 
-        self.questions = [item["questions"] for item in self.knowledge_base]
+        self.confidence_threshold = confidence_threshold
+
+        # Separate questions and answers 
+        self.questions = [item["question"] for item in self.knowledge_base]
         self.answers =  [item["answer"] for item in self.knowledge_base]
 
         # Preprocess questions
         self.processed_questions = [preprocess_text(q) for q in self.questions]
 
         # Build TF_IDF vectorizer
-        self.vectorizer = TfidfVectorizer()
+        self.vectorizer = TfidfVectorizer(tokenizer= preprocess_text)
         self.question_vectors = self.vectorizer.fit_transform(self.processed_questions)
 
-        def get_response(self, user_input: str) -> str:
-            """
-            Process user input, compare it with knowledge base
-            and returns the most relevant answer.
-            """
-            processed_input = preprocess_text(user_input)
-            input_vector = self.vectorizer.transform([preprocessed_input])
+    def get_response(self, user_input: str) -> str:
+        """
+        Process user input, compare it with knowledge base
+        and returns the most relevant answer.
+        """
+        import debugpy
+        debugpy.breakpoint()     # Testing the launch.json
 
-            # Compute similarity
-            if best_score < 0.2:
-                return "Hmmn, I would have to contact NASA for that 😂"
+        if not user_input.strip():
+            return playful_responses()
+        
+        processed_input = preprocess_text(user_input)
+        input_vector = self.vectorizer.transform([processed_input])
+
+        # Compute Similarity
+        similarities = cosine_similarity(input_vector, self.question_vectors)
+        best_match_index = similarities.argmax()
+        best_score = similarities[0][best_match_index]
+
+        # Apply configurable confidence threshold
+        if best_score < self.confidence_threshold:
+            return playful_responses()
+        return self.answers[best_match_index]
+
+if __name__ == "__main__":  
+    #Simple REPL for testing
+    bot = Chatbot("knowledge_base.json", confidence_threshold = 0.25)
+    bot_name = input("What's my name for this development stage? :")
+    print(f"{bot_name}: Space Exploration ChatBot  --> type 'quit' to exit" )
+    while True:
+        user_input = input("You:  ")
+        if user_input.lower() in ["quit", "exit", "bye", "alright, thank you"]:
+            print(f"{bot_name}: Yeah, i'd be in space waiting....")
+            break
+        response = bot.get_response(user_input)
+        print(f"{bot_name}:", response)

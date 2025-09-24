@@ -1,8 +1,10 @@
+import random
 import nltk
 import string
 from nltk.stem import WordNetLemmatizer
 from nltk.corpus import wordnet
-import string
+
+
 
 # Ensure neccessary NLTK data is downloaded 
 nltk.download ('punkt')
@@ -44,9 +46,28 @@ def preprocess_text(text):
             return wordnet.ADV
         else:
             return wordnet.NOUN    # default
-    
+
     lemmatized_tokens = [lemmatizer.lemmatize(word, get_wordnet_pos(tag)) for word, tag in pos_tags]
 
     return lemmatized_tokens
 
-    print(preprocess_text("The dogs are barking"))
+
+def playful_responses():
+    """
+    Generates Random playful resposes to unknown user questions.
+    """
+    replies = [
+        "Hmmn, I would get back to you. I'm phoning NASA for that....",
+        "Hmm, that question's in a different galaxy. Try asking me about blackholes",
+        "Even my cosmic database doesn't have an answer to that one. Ask me about blackholes instead!",
+        "That's beyond my event horizon. How about something closer to home, like Mars?",
+        "My circuits are drawing a blank on that one. Maybe try rephrasing?", 
+        "I'm still learning! Could you ask me about something space-related instead?", 
+        "Error  404: Space knowledge not found. Try asking about rockets or Astronauts?", 
+        "The cosmos hasn't revealed that secret to me yet. What else wonders you?", 
+        "Some mysteries remain within the stars. Perhaps ask about known celestial bodies instead?",
+        "That knowledge is still orbiting in uncharted space. Try a different question!",
+        "That's outside my current knowledge base. Want to try a space-related question instead?"
+    ]
+
+    return random.choice(replies)

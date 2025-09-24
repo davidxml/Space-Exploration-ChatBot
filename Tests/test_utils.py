@@ -1,8 +1,7 @@
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))  # Enables python to look up the parent folder
 from Backend.utils import preprocess_text
-
 
 
 # Example user inputs to test preprocessing

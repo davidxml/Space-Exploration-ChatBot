@@ -91,7 +91,7 @@ A: Apollo 10.
 Q: Which Apollo mission experienced an in-flight emergency that jeopardized the crew?
 A: Apollo 13, which suffered an explosion of an oxygen tank.
 
-Q_ What famous phrase was used by the Apollo 13 crew to report the problem?
+Q: What famous phrase was used by the Apollo 13 crew to report the problem?
 A: "Houston, we've had a problem."
 
 Q: Which Apollo mission was the first to use the Lunar Roving Vehicle (LRV)?

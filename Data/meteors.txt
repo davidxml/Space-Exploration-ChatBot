@@ -85,7 +85,7 @@ A: Chondrites and achondrites.
 Q: What is a chondrite?
 A: A type of stony meteorite that has not been modified due to melting or differentiation of the parent body. They are among the oldest objects in the solar system.
 
-QQD: What are chondrules?
+Q: What are chondrules?
 A: Small, spherical grains of silicate minerals found in chondrites. They are thought to have formed as molten droplets in the early solar nebula.
 
 Q: What is an achondrite?

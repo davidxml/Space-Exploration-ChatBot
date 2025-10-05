@@ -37,12 +37,10 @@ class Chatbot:
         Process user input, compare it with knowledge base
         and returns the most relevant answer.
         """
-        import debugpy
-        debugpy.breakpoint()     # Testing the launch.json
 
         if not user_input.strip():
             return playful_responses()
-        
+       
         processed_input = preprocess_text(user_input)
         input_vector = self.vectorizer.transform([processed_input])
 
@@ -58,8 +56,8 @@ class Chatbot:
 
 if __name__ == "__main__":  
     #Simple REPL for testing
-    bot = Chatbot("knowledge_base.json", confidence_threshold = 0.25)
-    bot_name = input("What's my name for this development stage? :")
+    bot = Chatbot("Data", confidence_threshold = 0.25)
+    bot_name = input("What's my name at this development stage? :")
     print(f"{bot_name}: Space Exploration ChatBot  --> type 'quit' to exit" )
     while True:
         user_input = input("You:  ")

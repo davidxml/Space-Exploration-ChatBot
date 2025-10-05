@@ -223,7 +223,7 @@ A: Geysers of water ice and vapor erupting from its south pole, suggesting a sub
 Q: What was the objective of NASA's Stardust mission?
 A: To fly through the coma of a comet (Wild 2), collect dust samples, and return them to Earth.
 
-Q_ What did the Deep Impact mission do in 2005?
+Q: What did the Deep Impact mission do in 2005?
 A: It intentionally fired a projectile into comet Tempel 1 to study the composition of its nucleus.
 
 Q: What was Japan's Hayabusa mission?

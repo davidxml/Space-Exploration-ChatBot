@@ -259,7 +259,7 @@ A: It was named after the king of the Roman gods.
 Q: What causes the distinct bands and zones in Jupiter's atmosphere?
 A: They are caused by strong east-west winds and differences in the chemistry and temperature of the atmospheric gases, creating belts (darker bands) and zones (lighter bands).
 
-Q_ What is metallic hydrogen?
+Q: What is metallic hydrogen?
 A: A phase of hydrogen that conducts electricity like a metal. It is believed to exist deep within Jupiter and Saturn, generating their strong magnetic fields.
 
 Q: Did a comet ever impact Jupiter?
